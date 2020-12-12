@@ -147,6 +147,7 @@ public class UserOrganizationServiceImpl implements UserOrganizationService {
         organizationService.save(organization);
     }
 
+    @SneakyThrows
     @Override
     public void joinPrivate(final Long userId, final PrivateJoinTokenDto privateJoinTokenDto) {
         final User user = userService.find(userId);
@@ -155,6 +156,7 @@ public class UserOrganizationServiceImpl implements UserOrganizationService {
         final Organization organization = organizationService.get(json.getLong("organizationId"));
     }
 
+    @SneakyThrows
     @Override
     public void privateJoin(final PrivateJoinTokenDto privateJoinTokenDto) {
         final JSONObject json = new JSONObject(jwtProvider.getSubject(privateJoinTokenDto.getToken()));

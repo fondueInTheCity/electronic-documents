@@ -4,6 +4,7 @@ import edu.fondue.electronicdocuments.configuration.UserPrinciple;
 import edu.fondue.electronicdocuments.dto.GenerateOrganizationJoinJwtDto;
 import edu.fondue.electronicdocuments.dto.PrivateJoinTokenDto;
 import io.jsonwebtoken.*;
+import lombok.SneakyThrows;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,6 +62,7 @@ public class JwtProvider {
         return false;
     }
 
+    @SneakyThrows
     public PrivateJoinTokenDto generatePrivateJoinJwtToken(final GenerateOrganizationJoinJwtDto jwtDto) {
         final String subject = new JSONObject()
                 .put("username", jwtDto.getUsername())
